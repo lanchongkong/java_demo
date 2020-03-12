@@ -1,2 +1,4 @@
 # java_demo
-demo project of java
+这是一个用来测试普通代码的java项目
+用于平常的一些java相关的小实验
+我会不定时更新一些没有用的代码在上面
