@@ -23,7 +23,7 @@
         </dependency>
         <dependency>
             <groupId>com.syk.common</groupId>
-            <artifactId>syk-common-secruity</artifactId>
+            <artifactId>syk-common-security</artifactId>
             <optional>true</optional>
         </dependency>
     </dependencies>

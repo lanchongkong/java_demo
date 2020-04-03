@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.syk.common.security.config.AuthorizationServerAutoConfiguration
+#,\com.syk.common.security.config.SecurityAutoConfiguration
