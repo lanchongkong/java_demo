@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.syk.test</groupId>
-    <artifactId>core-server</artifactId>
+    <artifactId>syk-auth-server</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <name>demo</name>
