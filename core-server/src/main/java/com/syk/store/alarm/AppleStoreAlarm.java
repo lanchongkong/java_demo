@@ -57,6 +57,7 @@ public class AppleStoreAlarm {
 
     @Scheduled(cron = "${syk.apple.store.cron:0/10 * * * * ?}")
     public void appleStoreMonitor() throws ApiException {
+        LOGGER.info("start to monitor");
         if (storeInfos.isEmpty()) {
             LOGGER.info("开始请求店铺信息");
             String accessKey = this.getAccessKey();
@@ -93,6 +94,7 @@ public class AppleStoreAlarm {
                 }
             }
         }
+        LOGGER.info("monitor end");
     }
 
     private String getAccessKey() throws ApiException {
