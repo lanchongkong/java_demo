@@ -57,7 +57,6 @@ public class AppleStoreAlarm {
 
     @Scheduled(cron = "${syk.apple.store.cron:0/10 * * * * ?}")
     public void appleStoreMonitor() throws ApiException {
-        LOGGER.info("扫描设备库存开始===========");
         if (storeInfos.isEmpty()) {
             LOGGER.info("开始请求店铺信息");
             JSONObject store = restTemplate.getForObject(appStoreProperties.getStoreUrl(), JSONObject.class);
@@ -91,7 +90,6 @@ public class AppleStoreAlarm {
                 }
             }
         }
-        LOGGER.info("扫描设备库存结束===========");
     }
 
     private String getAccessKey() throws ApiException {
