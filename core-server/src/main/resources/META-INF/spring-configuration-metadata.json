@@ -1,0 +1,71 @@
+{
+  "groups": [
+    {
+      "name": "syk.alarm.monitor",
+      "type": "com.syk.store.alarm.properties.MonitorProperties",
+      "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
+    },
+    {
+      "name": "syk.apple.store",
+      "type": "com.syk.store.alarm.properties.AppStoreProperties",
+      "sourceType": "com.syk.store.alarm.properties.AppStoreProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "syk.alarm.monitor.address",
+      "type": "java.lang.String",
+      "description": "地址",
+      "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
+    },
+    {
+      "name": "syk.alarm.monitor.app-key",
+      "type": "java.lang.String",
+      "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
+    },
+    {
+      "name": "syk.alarm.monitor.app-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
+    },
+    {
+      "name": "syk.alarm.monitor.chat-id",
+      "type": "java.lang.String",
+      "description": "会话Id",
+      "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
+    },
+    {
+      "name": "syk.alarm.monitor.item",
+      "type": "java.lang.String",
+      "description": "商品编号",
+      "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
+    },
+    {
+      "name": "syk.alarm.monitor.message-url",
+      "type": "java.lang.String",
+      "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
+    },
+    {
+      "name": "syk.alarm.monitor.token-url",
+      "type": "java.lang.String",
+      "description": "获取token",
+      "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
+    },
+    {
+      "name": "syk.apple.store.availability-url",
+      "type": "java.lang.String",
+      "sourceType": "com.syk.store.alarm.properties.AppStoreProperties"
+    },
+    {
+      "name": "syk.apple.store.cron",
+      "type": "java.lang.String",
+      "sourceType": "com.syk.store.alarm.properties.AppStoreProperties"
+    },
+    {
+      "name": "syk.apple.store.store-url",
+      "type": "java.lang.String",
+      "sourceType": "com.syk.store.alarm.properties.AppStoreProperties"
+    }
+  ],
+  "hints": []
+}

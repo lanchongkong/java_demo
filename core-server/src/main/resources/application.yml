@@ -14,3 +14,19 @@ spring:
   http:
     encoding:
       force: true
+
+syk:
+  apple:
+    store:
+      storeUrl: https://reserve-prime.apple.com/CN/zh_CN/reserve/A/stores.json
+      availabilityUrl: https://reserve-prime.apple.com/CN/zh_CN/reserve/A/availability.json
+      cron: 0/10 * * * * ?
+  alarm:
+    monitor:
+      item: MGLF3CH/A
+      address: 苏州,上海,无锡
+      tokenUrl: https://oapi.dingtalk.com/gettoken
+      messageUrl: https://oapi.dingtalk.com/chat/send
+      appKey: dingtrtke3g1jytgmekb
+      appsecret: dZLVvWzxk3Gu0onWnaFp_nEo-T1Kne-rnCDTy8-w6aZgO2P5ns2gUcY3-fhsAK0B
+      chatId: chatacc8a9cce1ccf89a25fd96566f2d3fff
