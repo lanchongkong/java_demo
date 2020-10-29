@@ -30,3 +30,13 @@ syk:
       appKey: dingtrtke3g1jytgmekb
       appsecret: dZLVvWzxk3Gu0onWnaFp_nEo-T1Kne-rnCDTy8-w6aZgO2P5ns2gUcY3-fhsAK0B
       chatId: chatacc8a9cce1ccf89a25fd96566f2d3fff
+
+farelog:
+  name: monitor
+  path: ./logs
+  history-days: 10
+logging:
+  level:
+    root: info
+    com: debug
+  size: 500
