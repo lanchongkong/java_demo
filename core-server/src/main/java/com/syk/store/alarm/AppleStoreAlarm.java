@@ -59,6 +59,8 @@ public class AppleStoreAlarm {
     public void appleStoreMonitor() throws ApiException {
         if (storeInfos.isEmpty()) {
             LOGGER.info("开始请求店铺信息");
+            String accessKey = this.getAccessKey();
+            this.sendMessage("开始监听", accessKey);
             JSONObject store = restTemplate.getForObject(appStoreProperties.getStoreUrl(), JSONObject.class);
             List<?> stores = store.getObject("stores", List.class);
             stores.parallelStream().forEach(storeJson -> {
@@ -84,6 +86,7 @@ public class AppleStoreAlarm {
                         && itemEntry.getKey().equals(monitorProperties.getItem())) {
                         String msg = String.format("城市：%s,店铺：%s,产品：%s 有库存", storeEntry.getValue().getCity(),
                             storeEntry.getValue().getStoreName(), itemEntry.getValue());
+                        LOGGER.info("target find，send message{}", msg);
                         String accessKey = this.getAccessKey();
                         this.sendMessage(msg, accessKey);
                     }
