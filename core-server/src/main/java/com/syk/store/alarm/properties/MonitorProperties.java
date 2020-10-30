@@ -13,32 +13,44 @@ import org.springframework.stereotype.Component;
 @Component
 public class MonitorProperties {
 
+    /**
+     * 产品信息
+     */
     private List<String> item;
 
     /**
-     * 地址
+     * 订阅店铺地区的地址
      */
     private String address;
 
     /**
-     * 获取token
+     * 获取钉钉token地址
      */
     private String tokenUrl;
 
+    /**
+     * 钉钉app key
+     */
     private String appKey;
 
+    /**
+     * 钉钉 appSecret
+     */
     private String appSecret;
 
     /**
-     * 会话Id
+     * 目标命中群聊ID
      */
     private String chatId;
 
     /**
-     * 全部
+     * 全部群聊ID
      */
     private String allChatId;
 
+    /**
+     * 钉钉发送消息接口地址
+     */
     private String messageUrl;
 
     public List<String> getItem() {

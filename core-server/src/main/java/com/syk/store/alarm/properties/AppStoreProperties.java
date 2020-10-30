@@ -11,8 +11,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class AppStoreProperties {
 
+    /**
+     * 获取店铺信息地址
+     */
     private String storeUrl;
 
+    /**
+     * 获取库存信息地址
+     */
     private String availabilityUrl;
 
     private String cron;

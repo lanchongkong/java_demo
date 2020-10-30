@@ -87,7 +87,7 @@ public class AppleStoreAlarm {
                     String allItemMsg = String.format("产品：%s,在地区%s,店铺%s有库存！！！", itemEnum.getName(),
                         storeEntry.getValue().getCity(), storeEntry.getValue().getStoreName());
                     LOGGER.info(allItemMsg);
-                    this.sendMessage(allItemMsg, accessKey, allItemMsg);
+                    this.sendMessage(allItemMsg, accessKey, monitorProperties.getAllChatId());
                     // 对比是否命中目标
                     if (locations.contains(storeEntry.getValue().getCity())) {
                         for (String target : monitorProperties.getItem()) {
@@ -95,7 +95,7 @@ public class AppleStoreAlarm {
                                 String msg = String.format("城市：%s,店铺：%s,产品：%s 有库存", storeEntry.getValue().getCity(),
                                     storeEntry.getValue().getStoreName(), itemEnum.getName());
                                 LOGGER.info("target find，send message{}", msg);
-                                this.sendMessage(msg, accessKey, allItemMsg);
+                                this.sendMessage(msg, accessKey, monitorProperties.getChatId());
                             }
                         }
                     }
