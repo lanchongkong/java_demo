@@ -15,50 +15,55 @@
     {
       "name": "syk.alarm.monitor.address",
       "type": "java.lang.String",
-      "description": "地址",
+      "description": "订阅店铺地区的地址",
       "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
     },
     {
       "name": "syk.alarm.monitor.all-chat-id",
       "type": "java.lang.String",
-      "description": "全部",
+      "description": "全部群聊ID",
       "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
     },
     {
       "name": "syk.alarm.monitor.app-key",
       "type": "java.lang.String",
+      "description": "钉钉app key",
       "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
     },
     {
       "name": "syk.alarm.monitor.app-secret",
       "type": "java.lang.String",
+      "description": "钉钉 appSecret",
       "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
     },
     {
       "name": "syk.alarm.monitor.chat-id",
       "type": "java.lang.String",
-      "description": "会话Id",
+      "description": "目标命中群聊ID",
       "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
     },
     {
       "name": "syk.alarm.monitor.item",
       "type": "java.util.List<java.lang.String>",
+      "description": "产品信息",
       "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
     },
     {
       "name": "syk.alarm.monitor.message-url",
       "type": "java.lang.String",
+      "description": "钉钉发送消息接口地址",
       "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
     },
     {
       "name": "syk.alarm.monitor.token-url",
       "type": "java.lang.String",
-      "description": "获取token",
+      "description": "获取钉钉token地址",
       "sourceType": "com.syk.store.alarm.properties.MonitorProperties"
     },
     {
       "name": "syk.apple.store.availability-url",
       "type": "java.lang.String",
+      "description": "获取库存信息地址",
       "sourceType": "com.syk.store.alarm.properties.AppStoreProperties"
     },
     {
@@ -69,6 +74,7 @@
     {
       "name": "syk.apple.store.store-url",
       "type": "java.lang.String",
+      "description": "获取店铺信息地址",
       "sourceType": "com.syk.store.alarm.properties.AppStoreProperties"
     }
   ],
