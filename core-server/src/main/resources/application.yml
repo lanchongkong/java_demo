@@ -23,14 +23,17 @@ syk:
       cron: 0/10 * * * * ?
   alarm:
     monitor:
-      item: MGLF3CH/A
-      address: 苏州,上海,无锡
+      item:
+        - 256GB 银色
+        - 128GB 银色
+        - 512GB 银色
+      address: 苏州,上海,无锡,杭州,南京
       tokenUrl: https://oapi.dingtalk.com/gettoken
       messageUrl: https://oapi.dingtalk.com/chat/send
       appKey: dingtrtke3g1jytgmekb
       appsecret: dZLVvWzxk3Gu0onWnaFp_nEo-T1Kne-rnCDTy8-w6aZgO2P5ns2gUcY3-fhsAK0B
       chatId: chatacc8a9cce1ccf89a25fd96566f2d3fff
-
+      allChatId: chatdbc9c228bc063eda1a8ad4537bf5832e
 farelog:
   name: monitor
   path: ./logs

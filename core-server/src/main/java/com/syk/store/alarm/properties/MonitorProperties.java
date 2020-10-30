@@ -1,5 +1,7 @@
 package com.syk.store.alarm.properties;
 
+import java.util.List;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -11,10 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MonitorProperties {
 
-    /**
-     * 商品编号
-     */
-    private String item;
+    private List<String> item;
 
     /**
      * 地址
@@ -35,13 +34,18 @@ public class MonitorProperties {
      */
     private String chatId;
 
+    /**
+     * 全部
+     */
+    private String allChatId;
+
     private String messageUrl;
 
-    public String getItem() {
+    public List<String> getItem() {
         return item;
     }
 
-    public void setItem(String item) {
+    public void setItem(List<String> item) {
         this.item = item;
     }
 
@@ -91,5 +95,13 @@ public class MonitorProperties {
 
     public void setMessageUrl(String messageUrl) {
         this.messageUrl = messageUrl;
+    }
+
+    public String getAllChatId() {
+        return allChatId;
+    }
+
+    public void setAllChatId(String allChatId) {
+        this.allChatId = allChatId;
     }
 }

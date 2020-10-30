@@ -1,7 +1,5 @@
 package com.syk.store.alarm;
 
-import static com.syk.store.alarm.constant.AppleStoreConstant.ITEM_INFO;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -24,6 +22,7 @@ import com.dingtalk.api.request.OapiGettokenRequest;
 import com.dingtalk.api.response.OapiChatSendResponse;
 import com.dingtalk.api.response.OapiGettokenResponse;
 import com.syk.store.alarm.bean.StoreEntity;
+import com.syk.store.alarm.constant.ItemEnum;
 import com.syk.store.alarm.properties.AppStoreProperties;
 import com.syk.store.alarm.properties.MonitorProperties;
 import com.taobao.api.ApiException;
@@ -58,10 +57,11 @@ public class AppleStoreAlarm {
     @Scheduled(cron = "${syk.apple.store.cron:0/10 * * * * ?}")
     public void appleStoreMonitor() throws ApiException {
         LOGGER.info("start to monitor");
+        String accessKey = this.getAccessKey();
         if (storeInfos.isEmpty()) {
             LOGGER.info("开始请求店铺信息");
-            String accessKey = this.getAccessKey();
-            this.sendMessage("开始监听", accessKey);
+            this.sendMessage("开始监听", accessKey, monitorProperties.getChatId());
+            this.sendMessage("开始监听", accessKey, monitorProperties.getAllChatId());
             JSONObject store = restTemplate.getForObject(appStoreProperties.getStoreUrl(), JSONObject.class);
             List<?> stores = store.getObject("stores", List.class);
             stores.parallelStream().forEach(storeJson -> {
@@ -78,18 +78,26 @@ public class AppleStoreAlarm {
 
         for (Map.Entry<String, StoreEntity> storeEntry : storeInfos.entrySet()) {
             JSONObject detailInfo = stock.getJSONObject("stores").getJSONObject(storeEntry.getKey());
-            for (Map.Entry<String, String> itemEntry : ITEM_INFO.entrySet()) {
-                JSONObject target = detailInfo.getJSONObject(itemEntry.getKey()).getJSONObject("availability");
-                if (target.getBoolean("contract") || target.getBoolean("unlocked")) {
-                    LOGGER.info("产品：{},在地区{},店铺{}有库存！！！", itemEntry.getValue(), storeEntry.getValue().getCity(),
-                        storeEntry.getValue().getStoreName());
-                    if (locations.contains(storeEntry.getValue().getCity())
-                        && itemEntry.getKey().equals(monitorProperties.getItem())) {
-                        String msg = String.format("城市：%s,店铺：%s,产品：%s 有库存", storeEntry.getValue().getCity(),
-                            storeEntry.getValue().getStoreName(), itemEntry.getValue());
-                        LOGGER.info("target find，send message{}", msg);
-                        String accessKey = this.getAccessKey();
-                        this.sendMessage(msg, accessKey);
+            // 遍历12种型号
+            for (ItemEnum itemEnum : ItemEnum.values()) {
+                // 获取对应的信号库存信息
+                JSONObject storeStock = detailInfo.getJSONObject(itemEnum.getCode()).getJSONObject("availability");
+                if (storeStock.getBoolean("contract") || storeStock.getBoolean("unlocked")) {
+                    // 有库存
+                    String allItemMsg = String.format("产品：%s,在地区%s,店铺%s有库存！！！", itemEnum.getName(),
+                        storeEntry.getValue().getCity(), storeEntry.getValue().getStoreName());
+                    LOGGER.info(allItemMsg);
+                    this.sendMessage(allItemMsg, accessKey, allItemMsg);
+                    // 对比是否命中目标
+                    if (locations.contains(storeEntry.getValue().getCity())) {
+                        for (String target : monitorProperties.getItem()) {
+                            if (itemEnum.getName().contains(target)) {
+                                String msg = String.format("城市：%s,店铺：%s,产品：%s 有库存", storeEntry.getValue().getCity(),
+                                    storeEntry.getValue().getStoreName(), itemEnum.getName());
+                                LOGGER.info("target find，send message{}", msg);
+                                this.sendMessage(msg, accessKey, allItemMsg);
+                            }
+                        }
                     }
                 }
             }
@@ -110,10 +118,10 @@ public class AppleStoreAlarm {
         return null;
     }
 
-    private void sendMessage(String msgInfo, String accessToken) throws ApiException {
+    private void sendMessage(String msgInfo, String accessToken, String chatId) throws ApiException {
         DingTalkClient client = new DefaultDingTalkClient(monitorProperties.getMessageUrl());
         OapiChatSendRequest request = new OapiChatSendRequest();
-        request.setChatid(monitorProperties.getChatId());
+        request.setChatid(chatId);
 
         OapiChatSendRequest.Msg msg = new OapiChatSendRequest.Msg();
         msg.setMsgtype("text");
