@@ -15,4 +15,4 @@ spring:
     encoding:
       force: true
 test:
-  url: https://t66y.com/notice.php
+  url: https://t66y.com/notice.php/
