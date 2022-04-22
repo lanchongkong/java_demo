@@ -19,6 +19,7 @@ public class AppTest {
 
     @Test
     public void test() {
+        System.out.println("fuck");
         HtmlParser myurl = new HtmlParser("<body", "/body>");
         myurl.getStartUrl(url);
         myurl.getUrlContent();
