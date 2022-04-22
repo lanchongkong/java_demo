@@ -14,3 +14,5 @@ spring:
   http:
     encoding:
       force: true
+test:
+  url: http://www.t66y.com/
