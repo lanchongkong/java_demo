@@ -15,4 +15,4 @@ spring:
     encoding:
       force: true
 test:
-  url: www.google.com
+  url: https://www.google.com/
